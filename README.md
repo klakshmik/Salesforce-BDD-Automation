@@ -30,9 +30,6 @@ webdriver.chrome.driver=path/to/chromedriver
 *	Navigate to the test runner class (e.g., CukesRunner.java) or individual feature files.
 *	Right-click on the file and select Run to execute the tests within IntelliJ IDEA.
 *	Ensure the Salesforce sandbox environment is set up and accessible.
-7.	Viewing Reports:
-*	After test execution, view the generated reports in the target/cucumber-reports directory.
-*	These reports provide detailed insights into the test execution results and help in analyzing the test outcomes.
 Project Structure:
 *	Java Programming Language: Utilized for writing test logic and implementing automation scripts.
 *	Cucumber (BDD, DDT): Implements Behavior-Driven Development (BDD) and Data-Driven Testing (DDT) methodologies, defining scenarios in Gherkin syntax.
