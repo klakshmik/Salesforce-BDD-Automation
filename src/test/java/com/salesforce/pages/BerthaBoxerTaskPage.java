@@ -13,10 +13,10 @@ public class BerthaBoxerTaskPage {
     }
 
     @FindBy(xpath = "//a[@title='Bertha Boxer']")
-    public WebElement bettyBairNameInTable;
+    public WebElement berthaNameInTable;
 
     @FindBy(xpath = "//lightning-formatted-name[.='Ms. Bertha Boxer']")
-    public  WebElement bettyRecord;
+    public  WebElement berthaRecord;
 
     @FindBy(xpath = "//li[@title='Activity']")
     public WebElement activityTab;

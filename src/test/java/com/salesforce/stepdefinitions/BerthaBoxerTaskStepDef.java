@@ -7,10 +7,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import static com.salesforce.utilities.BrowserUtils.getDatePlusDays;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class BerthaBoxerTaskStepDef {
@@ -38,22 +41,19 @@ public class BerthaBoxerTaskStepDef {
     public void user_clicks_on_the_lead_named() {
 
         // Locate the Bertha Boxer lead
-        WebElement betty = BerthaBoxerTaskPage.bettyBairNameInTable;
-        BrowserUtils.waitFor(2);
+        WebElement bertha = BerthaBoxerTaskPage.berthaNameInTable;
 
         // Click on the Bertha Boxer lead
-        betty.click();
+        bertha.click();
         BrowserUtils.waitFor(2);
 
     }
+
     @Then("user should see her record open")
     public void user_should_see_her_record_open() {
 
-
-
-
         // Verify Bertha Boxer's record is open
-        WebElement leadRecordElement = BerthaBoxerTaskPage.bettyRecord;
+        WebElement leadRecordElement = BerthaBoxerTaskPage.berthaRecord;
         assertTrue("Lead record page is not displayed", leadRecordElement.isDisplayed());
         BrowserUtils.waitFor(2);
     }
@@ -71,8 +71,8 @@ public class BerthaBoxerTaskStepDef {
     public void user_click_on() {
 
         // Click on the New Task button
-    BerthaBoxerTaskPage.newTaskButton.click();
-    BrowserUtils.waitFor(2);
+        BerthaBoxerTaskPage.newTaskButton.click();
+        BrowserUtils.waitFor(2);
     }
 
     @And("user creates a task  inserts value to Subject field {string}")
@@ -90,7 +90,7 @@ public class BerthaBoxerTaskStepDef {
 
         // Enter today's date in the Due Date field
         BrowserUtils.waitFor(2);
-        BerthaBoxerTaskPage.dueDateField.sendKeys(Keys.BACK_SPACE + todaysDate );
+        BerthaBoxerTaskPage.dueDateField.sendKeys(Keys.BACK_SPACE + todaysDate);
 
     }
 
@@ -101,7 +101,7 @@ public class BerthaBoxerTaskStepDef {
         String textRelatedField = BerthaBoxerTaskPage.relatedField.getText();
 
         // Clear the Related To field if not blank
-        if(!textRelatedField.isBlank()){
+        if (!textRelatedField.isBlank()) {
             BerthaBoxerTaskPage.relatedFieldDelete.click();
         }
     }
@@ -111,7 +111,7 @@ public class BerthaBoxerTaskStepDef {
 
         //get text from assigned to field and check if field is blank
         String textAssignedToField = BerthaBoxerTaskPage.assignedTo.getText();
-        if(textAssignedToField.isBlank()){
+        if (textAssignedToField.isBlank()) {
 
             // Select a default user if the Assigned To field is blank
             BrowserUtils.waitFor(2);
@@ -137,7 +137,7 @@ public class BerthaBoxerTaskStepDef {
         // Verify the status actual and expected
         // expectedStatus this is parameter in our current method of this step connected with feature file BerthaBoxerTask.feature
         //this method using data from feature file :-> row  20.And select to Status box value "In Progress" and save
-        assertTrue(actualStatus.equals(expectedStatus));
+        assertEquals(actualStatus, expectedStatus);
         BrowserUtils.waitFor(2);
 
         // Click save
@@ -165,7 +165,7 @@ public class BerthaBoxerTaskStepDef {
         System.out.println("Date 1 week from today: " + dateInOneWeek);
 
         // Enter the date in the Due Date field
-        BerthaBoxerTaskPage.dueDateField.sendKeys(Keys.BACK_SPACE + dateInOneWeek );
+        BerthaBoxerTaskPage.dueDateField.sendKeys(Keys.BACK_SPACE + dateInOneWeek);
         BrowserUtils.waitFor(2);
 
     }
@@ -184,14 +184,13 @@ public class BerthaBoxerTaskStepDef {
 
         // Verify the status actual and expected
         // statusExpected we take from feature file that we assigned to this method
-        assertTrue(statusActual.equals(statusExpected));
+        assertEquals(statusActual, statusExpected);
         BrowserUtils.waitFor(2);
 
         //click save button
         BerthaBoxerTaskPage.saveButton.click();
 
     }
-
 
 
 }

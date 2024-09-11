@@ -1,6 +1,5 @@
 Feature:Navigate and Interact
 
-
   Background: Successful login with valid credentials
     Given the user is on the Salesforce login page
     When the user enters valid username and password

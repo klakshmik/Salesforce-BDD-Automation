@@ -65,14 +65,11 @@ public class LoginStepDefs {
         // Define the expected title of the Salesforce dashboard page
         String expectedTitleOfHomePage = "Home | Salesforce";
 
-
         // Dismiss any notification pop-ups if present
         notificationHandler.dismissNotificationIfPresent();
 
         // Assert that the current page title contains the expected title for the dashboard
         Assert.assertTrue(driver.getTitle().contains(expectedTitleOfHomePage) );
-
-
 
     }
 }

@@ -15,19 +15,20 @@ public class ActivityTabAndTAskValidationPage {
     @FindBy(css = "#upcoming-activities-section-00Qak000005ntmrEAA>div>ul>li") // all lists
     public WebElement filteredUpcomingTaskCreateBudgetPlan;
 
-    @FindBy(xpath = "//div[@id='upcoming-activities-section-00Qak000005ntmrEAA']//ul/li[1]//a[@title='Submit Budget Plan for Review']")
+    @FindBy(xpath = "//div[@id='upcoming-activities-section-00Qak000005ntmrEAA']//ul/li[2]//a[@title='Submit Budget Plan for Review']")
     public WebElement upcomingTaskSubmitBudgetPlanForReview;
 
-    @FindBy(xpath = "//div[@id='upcoming-activities-section-00Qak000005ntmrEAA']//ul/li[2]//a[@title='Create Budget Plan']")
+    @FindBy(xpath = "//div[@id='upcoming-activities-section-00Qak000005ntmrEAA']//ul/li[1]//a[@title='Create Budget Plan']")
     public  WebElement upcomingTaskCreateBudgetPlan;
 
-    @FindBy(xpath = "//div[@class='slds-section open-activity-group openActivities slds-is-open']//ul/li[2]//a/lightning-icon[@title='Details for Create Budget Plan']/..")
+    @FindBy(xpath = "//div[@class='slds-section open-activity-group openActivities slds-is-open']//ul/li[1]//a/lightning-icon[@title='Details for Create Budget Plan']/..")
     public WebElement expandDetails;
-
+    @FindBy(xpath = "//div[@class='slds-section open-activity-group openActivities slds-is-open']//ul/li[2]//a/lightning-icon[@title='Details for Create Budget Plan']/..")
+    public WebElement expandDetails2;
     @FindBy(xpath = "//div[@class='slds-item--detail description bodyText tenLinesScroll']")
     public WebElement descriptionBox;
 
-    @FindBy(xpath = "(//div[@data-target-selection-name='d3d97191b9714f2388cd2ad681fdc4ed'])[2]/a")
+    @FindBy(xpath = "(//div[@data-target-selection-name='d3d97191b9714f2388cd2ad681fdc4ed'])[1]/a")
     public WebElement dropdown;
 
     @FindBy(xpath = "//textarea[@role='textbox']")

@@ -35,7 +35,7 @@ public class ActivityTabAndTaskValidation {
         driver.get(url);
 
         //wait for 2 sec
-        BrowserUtils.waitFor(4);
+        BrowserUtils.waitFor(2);
     }
 
     @Then("user should see both tasks displayed")
@@ -43,10 +43,10 @@ public class ActivityTabAndTaskValidation {
 
         // verify both tasks are displayed
         assertTrue(activityTaskValidationPage.upcomingTaskCreateBudgetPlan.isDisplayed());
-        BrowserUtils.waitFor(4);
+        BrowserUtils.waitFor(2);
 
         assertTrue(activityTaskValidationPage.upcomingTaskSubmitBudgetPlanForReview.isDisplayed());
-        BrowserUtils.waitFor(5);
+        BrowserUtils.waitFor(2);
 
     }
 
@@ -85,6 +85,7 @@ public class ActivityTabAndTaskValidation {
         activityTaskValidationPage.editComments.click();
         BrowserUtils.waitFor(2);
 
+        activityTaskValidationPage.textBox.clear();
         //insert comments  "Budget for Q4". this data will be taken
         // from feature file from feature file ActivityTabAndTaskValidation.feature
         activityTaskValidationPage.textBox.sendKeys(budgetForQ4);
@@ -102,7 +103,7 @@ public class ActivityTabAndTaskValidation {
 
         // using JavaScriptExecutor to click expand (>) button and see details box
         BrowserUtils.waitFor(5);
-        js.executeScript("arguments[0].click();", activityTaskValidationPage.expandDetails);
+        js.executeScript("arguments[0].click();", activityTaskValidationPage.expandDetails2);
         BrowserUtils.waitFor(5);
 
         //get text from description box and assign to String str

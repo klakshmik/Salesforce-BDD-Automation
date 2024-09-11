@@ -7,7 +7,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class NavigateAndInteractStepDefs {
 
@@ -19,67 +22,59 @@ public class NavigateAndInteractStepDefs {
     String homePageLink = "https://sitetracker-1a-dev-ed.develop.lightning.force.com/lightning/setup/SetupOneHome/home";
     WebDriver driver = Driver.getDriver();
 
-
-
     @When("the user navigates to the Home page")
     public void the_user_navigates_to_the_home_page() {
 
         //navigates to Home page
-       driver.get(homePageLink);
-        BrowserUtils.sleep(2); // Wait for 2 seconds
+        driver.get(homePageLink);
     }
 
     @And("the user opens the Apps menu and proceeds to the Leads section")
     public void the_user_opens_the_apps_menu_and_proceeds_to_the_section() {
-
         // Click on the App Launcher
         homePage.appLauncher.click();
-        BrowserUtils.sleep(3); //Wait for 3 seconds
+        BrowserUtils.sleep(1); //Wait for 3 seconds
 
         // Enter "Leads" in the search field and press Enter
-        homePage.inputAppLauncher.sendKeys("Leads"+Keys.ENTER);
+        homePage.inputAppLauncher.sendKeys("Leads" + Keys.ENTER);
 
         // Find and click on the "Leads" option
-         WebElement lead = driver.findElement(By.xpath("//b[contains(text(),'Leads')]"));
-         lead.click();
-         BrowserUtils.waitFor(3); // Wait for 3 seconds for the Leads section to load
+        WebElement lead = driver.findElement(By.xpath("//b[contains(text(),'Leads')]"));
+        lead.click();
+        BrowserUtils.waitFor(3); // Wait for 3 seconds for the Leads section to load
     }
 
 
     @When("the user ensures they are on the My Leads view")
     public void the_user_ensures_they_are_on_the_view() {
-
         // Click on the Leads object dropdown
-       homePage.leadsObjectDropdown.click();
-       BrowserUtils.waitFor(3);
+        BrowserUtils.clickWithVisibilityCheck(homePage.leadsObjectDropdown);
 
         // Click on the "My Leads" option
-       homePage.myLeadsOption.click();
-       BrowserUtils.waitFor(3);
+        BrowserUtils.clickWithVisibilityCheck(homePage.myLeadsOption);
 
+        BrowserUtils.waitFor(2);
 
-       //Expected title for My Lead page
+        //Expected title for My Lead page
         String myLeadsTitleExpected = "Bertha Boxer | Lead | Salesforce";
 
         // Assert that the actual title matches the expected title of My Leads page
-        Assert.assertTrue("You are not on the My Leads view",driver.getTitle().equals(myLeadsTitleExpected));
-        BrowserUtils.waitFor(3);
+        Assert.assertEquals("You are not on the My Leads view", driver.getTitle(), myLeadsTitleExpected);
 
     }
+
     @When("the user clicks on the Filter icon")
     public void the_user_clicks_on_the_filter_icon() {
 
-        // Click on the filter icon
-        homePage.filtersButton.click();
-        BrowserUtils.waitFor(2);
+        BrowserUtils.clickWithVisibilityCheck(homePage.filtersButton);
 
     }
+
     @When("the user sets Created Date to a custom range")
     public void the_user_sets_to_a_custom_range() {
 
         // Click on the Created Date button
-        homePage.createdDateButton.click();
-        BrowserUtils.waitFor(2);
+        BrowserUtils.clickWithVisibilityCheck(homePage.createdDateButton);
 
         //creating Date variable that will be inserted
         String dateInsert = "01/01/2024";
@@ -96,16 +91,15 @@ public class NavigateAndInteractStepDefs {
         homePage.buttonDone.click();
         BrowserUtils.waitFor(2);
 
-
     }
+
     @When("the user saves the filter")
     public void the_user_saves_the_filter() {
-
         // Click on the Save button to save data
-        homePage.saveButton.click();
-        BrowserUtils.waitFor(4);
+        BrowserUtils.clickWithVisibilityCheck(homePage.saveButton);
 
     }
+
     @Then("the user validates that the filter has been applied correctly")
     public void the_user_validates_that_the_filter_has_been_applied_correctly() {
 
@@ -118,13 +112,9 @@ public class NavigateAndInteractStepDefs {
         BrowserUtils.waitFor(3);
 
         // Assert that the displayed count matches the expected count
-        Assert.assertTrue("Leads count is not matching as expected",text.contains(leadsCountExpected));
+        Assert.assertTrue("Leads count is not matching as expected", text.contains(leadsCountExpected));
         BrowserUtils.waitFor(2);
     }
-
-
-
-
 
 
 }
