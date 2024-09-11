@@ -23,6 +23,16 @@ mvn clean install
 *	Set up the WebDriver path in the src/test/resources/config.properties file:
 webdriver.chrome.driver=path/to/chromedriver
 *	Ensure the WebDriver binary has executable permissions.
+<<<<<<< HEAD
+=======
+
+5.	Set Up Configuration Properties:
+*	Modify src/test/resources/config.properties to include necessary configurations such as URLs, login credentials, and other environment-specific settings.
+6.	Running Tests:
+*	Navigate to the test runner class (e.g., CukesRunner.java) or individual feature files.
+*	Right-click on the file and select Run to execute the tests within IntelliJ IDEA.
+*	Ensure the Salesforce sandbox environment is set up and accessible.
+>>>>>>> 7b1f7f2da9b0924e7b3fd224d98d06cdd2e4b110
 Project Structure:
 *	Java Programming Language: Utilized for writing test logic and implementing automation scripts.
 *	Cucumber (BDD, DDT): Implements Behavior-Driven Development (BDD) and Data-Driven Testing (DDT) methodologies, defining scenarios in Gherkin syntax.
